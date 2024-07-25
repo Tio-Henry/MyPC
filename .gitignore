@@ -1,0 +1,7 @@
+.vscode
+client/.godot
+host/.venv
+host/build
+host/dist
+*__pycache__
+host/test.py

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://usye25qwlhoo"]
+
+[ext_resource type="Theme" uid="uid://b8ur186yv2l3a" path="res://assets/resources/themes/home.tres" id="1_l101i"]
+[ext_resource type="Script" path="res://assets/home/scripts/action.gd" id="2_7ejxb"]
+
+[node name="ActionBtn" type="Button"]
+custom_minimum_size = Vector2(200, 250)
+offset_right = 8.0
+offset_bottom = 8.0
+focus_mode = 0
+theme = ExtResource("1_l101i")
+text = "empty"
+text_overrun_behavior = 3
+script = ExtResource("2_7ejxb")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

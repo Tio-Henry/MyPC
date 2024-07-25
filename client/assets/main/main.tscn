@@ -1,0 +1,157 @@
+[gd_scene load_steps=5 format=3 uid="uid://dxxy44jn5ncmt"]
+
+[ext_resource type="Script" path="res://assets/main/scripts/main.gd" id="1_qhuso"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sh01f"]
+bg_color = Color(0.0792582, 0.000106634, 0.175028, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5twdt"]
+bg_color = Color(0, 0, 0, 0.392157)
+border_width_top = 60
+border_color = Color(0.406587, 0.130233, 0.824807, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_r2r77"]
+font_size = 24
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qhuso")
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_sh01f")
+metadata/_edit_lock_ = true
+
+[node name="Menu" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -250.0
+offset_right = 300.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5twdt")
+
+[node name="Label" type="Label" parent="Menu"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 60.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 35
+text = "Connect your PC"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -277.0
+offset_top = -176.0
+offset_right = 277.0
+offset_bottom = 233.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+alignment = 2
+
+[node name="Address" type="HBoxContainer" parent="Menu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+alignment = 1
+
+[node name="IPEdit" type="LineEdit" parent="Menu/VBoxContainer/Address"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+placeholder_text = "123.456.789.999"
+max_length = 15
+virtual_keyboard_type = 4
+
+[node name="Label" type="Label" parent="Menu/VBoxContainer/Address/IPEdit"]
+layout_mode = 1
+offset_top = -35.0
+offset_right = 129.0
+offset_bottom = -1.0
+text = "IP Address:"
+label_settings = SubResource("LabelSettings_r2r77")
+vertical_alignment = 2
+metadata/_edit_lock_ = true
+
+[node name="PortEdit" type="LineEdit" parent="Menu/VBoxContainer/Address"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+placeholder_text = "0000"
+max_length = 4
+virtual_keyboard_type = 2
+
+[node name="Label" type="Label" parent="Menu/VBoxContainer/Address/PortEdit"]
+layout_mode = 1
+offset_top = -35.0
+offset_right = 56.0
+offset_bottom = -1.0
+text = "Port:"
+label_settings = SubResource("LabelSettings_r2r77")
+vertical_alignment = 2
+metadata/_edit_lock_ = true
+
+[node name="PasswordEdit" type="LineEdit" parent="Menu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+virtual_keyboard_type = 2
+
+[node name="Label" type="Label" parent="Menu/VBoxContainer/PasswordEdit"]
+layout_mode = 1
+offset_top = -35.0
+offset_right = 120.0
+offset_bottom = -1.0
+text = "Password:"
+label_settings = SubResource("LabelSettings_r2r77")
+metadata/_edit_lock_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Menu/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="CheckBox" type="CheckBox" parent="Menu/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 25
+theme_override_font_sizes/font_size = 25
+text = "Save Connect"
+alignment = 1
+
+[node name="ConnectBtn" type="Button" parent="Menu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Connect"
+
+[connection signal="text_changed" from="Menu/VBoxContainer/Address/IPEdit" to="." method="_on_ip_edit_text_changed"]
+[connection signal="text_changed" from="Menu/VBoxContainer/Address/PortEdit" to="." method="_on_port_edit_text_changed"]
+[connection signal="text_changed" from="Menu/VBoxContainer/PasswordEdit" to="." method="_on_password_edit_text_changed"]
+[connection signal="pressed" from="Menu/VBoxContainer/ConnectBtn" to="." method="_on_connect_btn_pressed"]

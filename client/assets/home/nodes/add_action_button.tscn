@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbkjvufdl41ua"]
+
+[ext_resource type="Theme" uid="uid://b8ur186yv2l3a" path="res://assets/resources/themes/home.tres" id="1_3ynqs"]
+[ext_resource type="Texture2D" uid="uid://brvl3kx5in8bn" path="res://assets/resources/icons/add.png" id="1_45yw7"]
+[ext_resource type="Script" path="res://assets/home/scripts/add_action.gd" id="3_oc8bs"]
+
+[node name="ActionBtn" type="Button"]
+custom_minimum_size = Vector2(200, 250)
+offset_right = 8.0
+offset_bottom = 8.0
+focus_mode = 0
+theme = ExtResource("1_3ynqs")
+icon = ExtResource("1_45yw7")
+icon_alignment = 1
+script = ExtResource("3_oc8bs")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

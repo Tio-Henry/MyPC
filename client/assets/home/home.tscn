@@ -1,0 +1,78 @@
+[gd_scene load_steps=5 format=3 uid="uid://yuvebtq8hqvx"]
+
+[ext_resource type="Script" path="res://assets/home/scripts/home.gd" id="1_l5e4l"]
+[ext_resource type="PackedScene" uid="uid://dbkjvufdl41ua" path="res://assets/home/nodes/add_action_button.tscn" id="2_0n3ax"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k3qpl"]
+bg_color = Color(0.0792582, 0.000106634, 0.175028, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_urooa"]
+bg_color = Color(0.138965, 0.000261543, 0.311683, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.259746, 0.000825972, 0.548466, 1)
+border_blend = true
+shadow_size = 25
+
+[node name="Home" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l5e4l")
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_k3qpl")
+metadata/_edit_lock_ = true
+
+[node name="Toolbar" type="Panel" parent="."]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 100.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_urooa")
+
+[node name="Title" type="Label" parent="Toolbar"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -22.0
+offset_right = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "MyPC"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 114.0
+offset_right = -20.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 40
+theme_override_constants/v_separation = 20
+columns = 3
+
+[node name="ActionBtn" parent="GridContainer" instance=ExtResource("2_0n3ax")]
+layout_mode = 2
